@@ -1,15 +1,19 @@
-# yolov4-deepsort
+# Personerkennung
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](LICENSE)
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1zmeSTP3J5zu2d5fHgsQC06DyYEYJFXq1?usp=sharing)
 
+## Introduction
 Im Bereich des Baustellenmanagements hat die intelligente Personenerkennung und -verfolgung einen hohen Anwendungswert, da sie die Zahl der Verkehrsunfälle erheblich verringern könnte.
 Dieses Projekt konzentriert sich hauptsächlich auf YOLO für die Personenerkennung und DeepSORT für die Personenverfolgung. Der YOLO-Algorithmus wird häufig für die Erkennung mehrerer Personen in Echtzeit verwendet, wobei er eine gute durchschnittliche Genauigkeit beibehält. Für die Personenerkennung wird der Deep-Learning-Algorithmus YOLOv4 (wählbar zwischen den Versionen YOLOv3 und Tiny) implementiert, der nach einer Evaluierung optimiert werden soll. DeepSORT verwendet den Kalman-Filter für die Personenverfolgung und nutzt den ungarischen Matching-Algorithmus als Ankermechanismus. DeepSORT verwendet den Zieldetektor, um das Videobild zu verarbeiten, und extrahiert Merkmale in den Frames des erkannten Ziels, einschließlich der offensichtlichen Merkmale (für den Merkmalsvergleich, um einen ID-Wechsel zu vermeiden) und der Bewegungsmerkmale (Kalman-Filter, um sie vorherzusagen), und berechnet schließlich den Übereinstimmungsgrad vor den Zielen von zwei benachbarten Frames. DeepSort fügt ein vorab trainiertes neuronales Netz zur Erstellung von Objektmerkmalen hinzu, das eine Assoziation auf der Grundlage der Ähnlichkeit der Merkmale anstelle einer Überlappung ermöglicht.
 Um den Detektor für den praktischen Einsatz anpassungsfähiger zu machen, insbesondere wenn die Personen klein oder verdeckt sind, wurde die Struktur des Detektors durch Hinzufügen von Aufmerksamkeitsmechanismen und Reduzieren von Parametern verbessert, um Personen mit relativ hoher Genauigkeit und geringem GPU-Speicherverbrauch zu erkennen. 
 
-## Demo of Object Tracker on Persons
+## Demo zur Personenerkennung
 <p align="center"><img src="data/helpers/demo.gif"\></p>
 
-## Demo of Object Tracker on Cars
+## Demo zur Re-Identifizierung der Person
+<p align="center"><img src="data/helpers/cars.gif"\></p>
+
+## Demo zur Merkmalsvergleich zur Vermeidung eines ID-Wechsels
 <p align="center"><img src="data/helpers/cars.gif"\></p>
 
 ## Getting Started
