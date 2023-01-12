@@ -128,4 +128,4 @@ convert_model.py:
 
   * YOLOv4: Optimal Speed and Accuracy of Object Detection [YOLOv4](https://arxiv.org/abs/2004.10934).
   * [darknet](https://github.com/AlexeyAB/darknet)
-  * [DeepSort][Deepsort](https://arxiv.org/abs/1703.07402)
+  * [Simple Online and Realtime Tracking with a Deep Association Metric][Deepsort](https://arxiv.org/abs/1703.07402)
