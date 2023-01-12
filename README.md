@@ -38,7 +38,7 @@ pip install -r requirements-gpu.txt
 Stellen Sie sicher, dass Sie CUDA Toolkit Version 10.1 verwenden, da dies die richtige Version für die in diesem Repository verwendete TensorFlow Version ist.https://developer.nvidia.com/cuda-10.1-download-archive-update2
 
 ## Herunterladen der offiziellen YOLOv4 Pre-trained Weights
-Unser Objekt-Tracker verwendet YOLOv4 für die Objekterkennung, die Deep Sort dann zum Tracking verwendet. Es gibt ein offizielles vortrainiertes YOLOv4-Objektdetektormodell. Für einfache Demozwecke werden wir die vortrainierten Gewichte für unseren Tracker verwenden. Laden Sie die vortrainierte Datei yolov4.weights herunter:
+Unser Person-Tracker verwendet YOLOv4 für die Personerkennung, die Deep Sort dann zum Tracking verwendet. Es gibt ein offizielles vortrainiertes YOLOv4-Objektdetektormodell. Für einfache Demozwecke werden wir die vortrainierten Gewichte für unseren Tracker verwenden. Laden Sie die vortrainierte Datei yolov4.weights herunter:
 https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v3_optimal/yolov4.weights
 
 Kopieren Sie yolov4.weights aus Ihrem Download-Ordner und fügen Sie es in den Ordner "data" dieses Repositorys ein.
@@ -54,14 +54,14 @@ https://pjreddie.com/media/files/yolov3-tiny.weights
 Link zum Herunterladen der Personendetektion mit yolov3-608.weights, trainiert mit dem Open Images Dataset:
 https://drive.google.com/file/d/1DEGM-DKt0D0XQfpuu-V01fc_3bNJ9n48/view?usp=sharing
 
-## Running the Tracker with YOLOv4
-To implement the object tracking using YOLOv4, first we convert the .weights into the corresponding TensorFlow model which will be saved to a checkpoints folder. Then all we need to do is run the object_tracker.py script to run our object tracker with YOLOv4, DeepSort and TensorFlow.
+## Ausführen des Trackers mit YOLOv4
+Um die Personenverfolgung mit YOLOv4 zu implementieren, konvertieren wir zunächst die .weights in das entsprechende TensorFlow-Modell, das in einem Checkpoints-Ordner gespeichert wird. Dann müssen wir nur noch das Skript main.py ausführen, um unseren Person-Tracker mit YOLOv4, DeepSort und TensorFlow zu starten.
 ```bash
-# Convert darknet weights to tensorflow model
-python save_model.py --model yolov4 
+# Darknet-weights in TensorFlow-Modell umwandeln
+python convert_model.py --model yolov4 
 
-# Run yolov4 deep sort object tracker on video
-python object_tracker.py --video ./data/video/test.mp4 --output ./outputs/demo.avi --model yolov4
+# yolov4 Deep Sort Person Tracker auf Video ausführen
+python main.py --video ./data/video/test.mp4 --output ./outputs/demo.avi --model yolov4
 
 # Run yolov4 deep sort object tracker on webcam (set video flag to 0)
 python object_tracker.py --video 0 --output ./outputs/webcam.avi --model yolov4
