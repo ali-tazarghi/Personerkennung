@@ -63,89 +63,69 @@ python convert_model.py --model yolov4
 # yolov4 Deep Sort Person Tracker auf Video ausführen
 python main.py --video ./data/video/test.mp4 --output ./outputs/demo.avi --model yolov4
 
-# Run yolov4 deep sort object tracker on webcam (set video flag to 0)
-python object_tracker.py --video 0 --output ./outputs/webcam.avi --model yolov4
+# yolov4 deep sort Person tracker auf Webcam ausführen (Video-Flag auf 0 setzen)
+python main.py --video 0 --output ./outputs/webcam.avi --model yolov4
 ```
-The output flag allows you to save the resulting video of the object tracker running so that you can view it again later. Video will be saved to the path that you set. (outputs folder is where it will be if you run the above command!)
+Mit dem Output-Flag können Sie das Video des Personentrackers speichern, damit Sie es später noch einmal ansehen können. Das Video wird in dem path gespeichert, den Sie angegeben haben. (Der Output-Ordner ist der Ort, an dem es sich befindet, wenn Sie den obigen Befehl ausführen!)
 
-If you want to run yolov3 set the model flag to ``--model yolov3``, upload the yolov3.weights to the 'data' folder and adjust the weights flag in above commands. (see all the available command line flags and descriptions of them in a below section)
+Wenn Sie yolov3 ausführen möchten, setzen Sie die Modellflagge auf ``--model yolov3``, laden Sie die yolov3.weights in den 'data'-Ordner und passen Sie die weights-Flagge in obigen Befehlen an. (siehe alle verfügbaren Befehlszeilen-Flags und deren Beschreibungen in einem der folgenden Abschnitte)
 
-## Running the Tracker with YOLOv4-Tiny
-The following commands will allow you to run yolov4-tiny model. Yolov4-tiny allows you to obtain a higher speed (FPS) for the tracker at a slight cost to accuracy. Make sure that you have downloaded the tiny weights file and added it to the 'data' folder in order for commands to work!
+## Ausführen des Trackers mit YOLOv4-Tiny
+Mit den folgenden Befehlen können Sie das yolov4-tiny-Modell ausführen. Mit Yolov4-Tiny können Sie eine höhere Geschwindigkeit (FPS) für den Tracker erzielen, was allerdings zu Lasten der Genauigkeit geht. Vergewissern Sie sich, dass Sie die Datei "tiny weights" heruntergeladen und in den Ordner "data" eingefügt haben, damit die Befehle funktionieren!
 ```
 # save yolov4-tiny model
-python save_model.py --weights ./data/yolov4-tiny.weights --output ./checkpoints/yolov4-tiny-416 --model yolov4 --tiny
+python convert_model.py --weights ./data/yolov4-tiny.weights --output ./checkpoints/yolov4-tiny-416 --model yolov4 --tiny
 
 # Run yolov4-tiny object tracker
-python object_tracker.py --weights ./checkpoints/yolov4-tiny-416 --model yolov4 --video ./data/video/test.mp4 --output ./outputs/tiny.avi --tiny
+python main.py --weights ./checkpoints/yolov4-tiny-416 --model yolov4 --video ./data/video/test.mp4 --output ./outputs/tiny.avi --tiny
 ```
 
-## Resulting Video
-As mentioned above, the resulting video will save to wherever you set the ``--output`` command line flag path to. I always set it to save to the 'outputs' folder. You can also change the type of video saved by adjusting the ``--output_format`` flag, by default it is set to AVI codec which is XVID.
-
-Example video showing tracking of all coco dataset classes:
-<p align="center"><img src="data/helpers/all_classes.gif"\></p>
-
-## Filter Classes that are Tracked by Object Tracker
-By default the code is setup to track all 80 or so classes from the coco dataset, which is what the pre-trained YOLOv4 model is trained on. However, you can easily adjust a few lines of code in order to track any 1 or combination of the 80 classes. It is super easy to filter only the ``person`` class or only the ``car`` class which are most common.
-
-To filter a custom selection of classes all you need to do is comment out line 159 and uncomment out line 162 of [object_tracker.py](https://github.com/theAIGuysCode/yolov4-deepsort/blob/master/object_tracker.py) Within the list ``allowed_classes`` just add whichever classes you want the tracker to track. The classes can be any of the 80 that the model is trained on, see which classes you can track in the file [data/classes/coco.names](https://github.com/theAIGuysCode/yolov4-deepsort/blob/master/data/classes/coco.names)
-
-This example would allow the classes for person and car to be tracked.
-<p align="center"><img src="data/helpers/filter_classes.PNG"\></p>
-
-### Demo of Object Tracker set to only track the class 'person'
-<p align="center"><img src="data/helpers/demo.gif"\></p>
-
-### Demo of Object Tracker set to only track the class 'car'
-<p align="center"><img src="data/helpers/cars.gif"\></p>
+Wie bereits erwähnt, wird das resultierende Video an dem Ort gespeichert, auf den Sie den path des ``--output`` -Befehlszeilenflags setzen. Ich habe es so eingestellt, dass es im Ordner "outputs" gespeichert wird. Sie können auch den Typ des gespeicherten Videos ändern, indem Sie das ``--output_format`` -Flag anpassen. standardmäßig ist es auf AVI-Codec eingestellt, was XVID ist.
 
 ## Command Line Args Reference
 
 ```bash
-save_model.py:
-  --weights: path to weights file
+convert_model.py:
+  --weights: Path zur weights-Datei
     (default: './data/yolov4.weights')
-  --output: path to output
+  --output: Path zur Ausgabe
     (default: './checkpoints/yolov4-416')
-  --[no]tiny: yolov4 or yolov4-tiny
+  --[no]tiny: yolov4 oder yolov4-tiny
     (default: 'False')
-  --input_size: define input size of export model
+  --input_size: Eingabegröße des Exportmodells definieren
     (default: 416)
   --framework: what framework to use (tf, trt, tflite)
     (default: tf)
-  --model: yolov3 or yolov4
+  --model: yolov3 oder yolov4
     (default: yolov4)
     
- object_tracker.py:
-  --video: path to input video (use 0 for webcam)
+ main.py:
+  --video: path zur input video (verwenden 0 für webcam)
     (default: './data/video/test.mp4')
-  --output: path to output video (remember to set right codec for given format. e.g. XVID for .avi)
+  --output: path to output video ( achten beim Format auf den richtigen Codec, z.B. XVID für .avi)
     (default: None)
-  --output_format: codec used in VideoWriter when saving video to file
+  --output_format: Codec, der in VideoWriter beim Speichern des Videos in einer Datei verwendet wird
     (default: 'XVID)
-  --[no]tiny: yolov4 or yolov4-tiny
+  --[no]tiny: yolov4 oder yolov4-tiny
     (default: 'false')
-  --weights: path to weights file
+  --weights: Path zur Weights-Datei
     (default: './checkpoints/yolov4-416')
-  --framework: what framework to use (tf, trt, tflite)
-    (default: tf)
-  --model: yolov3 or yolov4
+  --model: yolov3 oder yolov4
     (default: yolov4)
-  --size: resize images to
+  --size: Ändern der Bildgröße auf
     (default: 416)
   --iou: iou threshold
     (default: 0.45)
   --score: confidence threshold
     (default: 0.50)
-  --dont_show: dont show video output
+  --dont_show: Videoausgabe nicht anzeigen
     (default: False)
-  --info: print detailed info about tracked objects
+  --info: detaillierte Informationen über verfolgte personnen drucken
     (default: False)
 ```
 
 ### References  
 
-   Huge shoutout goes to hunglc007 and nwojke for creating the backbones of this repository:
-  * [tensorflow-yolov4-tflite](https://github.com/hunglc007/tensorflow-yolov4-tflite)
-  * [Deep SORT Repository](https://github.com/nwojke/deep_sort)
+  * YOLOv4: Optimal Speed and Accuracy of Object Detection [YOLOv4](https://arxiv.org/abs/2004.10934).
+  * [darknet](https://github.com/AlexeyAB/darknet)
+  * [DeepSort](https://github.com/zzh8829/yolov3-tf2)
