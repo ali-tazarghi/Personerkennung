@@ -16,27 +16,21 @@ Um den Detektor für den praktischen Einsatz anpassungsfähiger zu machen, insbe
 ## Demo zur Merkmalsvergleich zur Vermeidung eines ID-Wechsels
 <p align="center"><img src="data/Fotos/switch-ID.gif"\></p>
 
-## Getting Started
-To get started, install the proper dependencies either via Anaconda or Pip. I recommend Anaconda route for people using a GPU as it configures CUDA toolkit version for you.
+## Erste Schritte
+Um loszulegen, installieren Sie die richtigen Abhängigkeiten entweder über Anaconda oder Pip. Ich empfehle die Anaconda-Route für Leute, die eine GPU verwenden, da sie die CUDA-Toolkit-Version für Sie konfiguriert.
 
-### Conda (Recommended)
+### Conda (Empfohlen)
 
 ```bash
-# Tensorflow CPU
-conda env create -f conda-cpu.yml
-conda activate yolov4-cpu
-
 # Tensorflow GPU
 conda env create -f conda-gpu.yml
 conda activate yolov4-gpu
 ```
 
 ### Pip
-(TensorFlow 2 packages require a pip version >19.0.)
-```bash
-# TensorFlow CPU
-pip install -r requirements.txt
 
+(TensorFlow 2 Pakete benötigen eine pip Version >19.0.)
+```bash
 # TensorFlow GPU
 pip install -r requirements-gpu.txt
 ```
