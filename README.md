@@ -8,13 +8,13 @@ Dieses Projekt konzentriert sich hauptsächlich auf YOLO für die Personenerkenn
 Um den Detektor für den praktischen Einsatz anpassungsfähiger zu machen, insbesondere wenn die Personen klein oder verdeckt sind, wurde die Struktur des Detektors durch Hinzufügen von Aufmerksamkeitsmechanismen und Reduzieren von Parametern verbessert, um Personen mit relativ hoher Genauigkeit und geringem GPU-Speicherverbrauch zu erkennen. 
 
 ## Demo zur Personenerkennung
-<p align="center"><img src="data/helpers/demo.gif"\></p>
+<p align="center"><img src="data/Fotos/personerekennung.gif"\></p>
 
 ## Demo zur Re-Identifizierung der Person
-<p align="center"><img src="data/helpers/cars.gif"\></p>
+<p align="center"><img src="data/Fotos/re_ID.gif"\></p>
 
 ## Demo zur Merkmalsvergleich zur Vermeidung eines ID-Wechsels
-<p align="center"><img src="data/helpers/cars.gif"\></p>
+<p align="center"><img src="data/Fotos/switch-ID.gif"\></p>
 
 ## Getting Started
 To get started, install the proper dependencies either via Anaconda or Pip. I recommend Anaconda route for people using a GPU as it configures CUDA toolkit version for you.
