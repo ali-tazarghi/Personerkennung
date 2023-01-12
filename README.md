@@ -44,10 +44,13 @@ https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v3_optimal/yo
 Kopieren Sie yolov4.weights aus Ihrem Download-Ordner und fügen Sie es in den Ordner "data" dieses Repositorys ein.
 
 Wenn Sie yolov4-tiny.weights verwenden möchten, ein kleineres Modell, das schneller, aber weniger genau ist, können Sie die Datei hier herunterladen: https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v4_pre/yolov4-tiny.weights
+
 Link zum Download von yolov3.weights:
 https://pjreddie.com/media/files/yolov3.weights
+
 Link zum Download von yolov3-tiny.weights:
 https://pjreddie.com/media/files/yolov3-tiny.weights
+
 Link zum Herunterladen der Personendetektion mit yolov3-608.weights, trainiert mit dem Open Images Dataset:
 https://drive.google.com/file/d/1DEGM-DKt0D0XQfpuu-V01fc_3bNJ9n48/view?usp=sharing
 
