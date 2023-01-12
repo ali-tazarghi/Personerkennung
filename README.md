@@ -34,18 +34,22 @@ conda activate yolov4-gpu
 # TensorFlow GPU
 pip install -r requirements-gpu.txt
 ```
-### Nvidia Driver (For GPU, if you are not using Conda Environment and haven't set up CUDA yet)
-Make sure to use CUDA Toolkit version 10.1 as it is the proper version for the TensorFlow version used in this repository.
-https://developer.nvidia.com/cuda-10.1-download-archive-update2
+### Der Nvidia-Driver (für die GPU, wenn Sie keine Conda Environment verwenden und CUDA noch nicht eingerichtet haben)
+Stellen Sie sicher, dass Sie CUDA Toolkit Version 10.1 verwenden, da dies die richtige Version für die in diesem Repository verwendete TensorFlow Version ist.https://developer.nvidia.com/cuda-10.1-download-archive-update2
 
-## Downloading Official YOLOv4 Pre-trained Weights
-Our object tracker uses YOLOv4 to make the object detections, which deep sort then uses to track. There exists an official pre-trained YOLOv4 object detector model that is able to detect 80 classes. For easy demo purposes we will use the pre-trained weights for our tracker.
-Download pre-trained yolov4.weights file: https://drive.google.com/open?id=1cewMfusmPjYWbrnuJRuKhPMwRe_b9PaT
+## Herunterladen der offiziellen YOLOv4 Pre-trained Weights
+Unser Objekt-Tracker verwendet YOLOv4 für die Objekterkennung, die Deep Sort dann zum Tracking verwendet. Es gibt ein offizielles vortrainiertes YOLOv4-Objektdetektormodell. Für einfache Demozwecke werden wir die vortrainierten Gewichte für unseren Tracker verwenden. Laden Sie die vortrainierte Datei yolov4.weights herunter:
 https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v3_optimal/yolov4.weights
 
-Copy and paste yolov4.weights from your downloads folder into the 'data' folder of this repository.
+Kopieren Sie yolov4.weights aus Ihrem Download-Ordner und fügen Sie es in den Ordner "data" dieses Repositorys ein.
 
-If you want to use yolov4-tiny.weights, a smaller model that is faster at running detections but less accurate, download file here: https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v4_pre/yolov4-tiny.weights
+Wenn Sie yolov4-tiny.weights verwenden möchten, ein kleineres Modell, das schneller, aber weniger genau ist, können Sie die Datei hier herunterladen: https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v4_pre/yolov4-tiny.weights
+Link zum Download von yolov3.weights:
+https://pjreddie.com/media/files/yolov3.weights
+Link zum Download von yolov3-tiny.weights:
+https://pjreddie.com/media/files/yolov3-tiny.weights
+Link zum Herunterladen der Personendetektion mit yolov3-608.weights, trainiert mit dem Open Images Dataset:
+https://drive.google.com/file/d/1DEGM-DKt0D0XQfpuu-V01fc_3bNJ9n48/view?usp=sharing
 
 ## Running the Tracker with YOLOv4
 To implement the object tracking using YOLOv4, first we convert the .weights into the corresponding TensorFlow model which will be saved to a checkpoints folder. Then all we need to do is run the object_tracker.py script to run our object tracker with YOLOv4, DeepSort and TensorFlow.
