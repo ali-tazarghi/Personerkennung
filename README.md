@@ -93,8 +93,6 @@ convert_model.py:
     (default: 'False')
   --input_size: Eingabegröße des Exportmodells definieren
     (default: 416)
-  --framework: what framework to use (tf, trt, tflite)
-    (default: tf)
   --model: yolov3 oder yolov4
     (default: yolov4)
     
