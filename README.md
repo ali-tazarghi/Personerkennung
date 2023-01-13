@@ -60,10 +60,10 @@ Um die Personenverfolgung mit YOLOv4 zu implementieren, konvertieren wir zunäch
 python convert_model.py --model yolov4 
 
 # yolov4 Deep Sort Person Tracker auf Video ausführen
-python main.py --video ./data/video/test.mp4 --output ./outputs/demo.avi --model yolov4
+python main.py --video ./data/video/test.mp4 --output ./outputs/demo.avi --model yolov4 --info
 
 # yolov4 deep sort Person tracker auf Webcam ausführen (Video-Flag auf 0 setzen)
-python main.py --video 0 --output ./outputs/webcam.avi --model yolov4
+python main.py --video 0 --output ./outputs/webcam.avi --model yolov4 --info
 ```
 Mit dem Output-Flag können Sie das Video des Personentrackers speichern, damit Sie es später noch einmal ansehen können. Das Video wird in dem path gespeichert, den Sie angegeben haben. (Der Output-Ordner ist der Ort, an dem es sich befindet, wenn Sie den obigen Befehl ausführen!)
 
@@ -76,7 +76,7 @@ Mit den folgenden Befehlen können Sie das yolov4-tiny-Modell ausführen. Mit Yo
 python convert_model.py --weights ./data/yolov4-tiny.weights --output ./checkpoints/yolov4-tiny-416 --model yolov4 --tiny
 
 # Run yolov4-tiny object tracker
-python main.py --weights ./checkpoints/yolov4-tiny-416 --model yolov4 --video ./data/video/test.mp4 --output ./outputs/tiny.avi --tiny
+python main.py --weights ./checkpoints/yolov4-tiny-416 --model yolov4 --video ./data/video/test.mp4 --output ./outputs/tiny.avi --tiny --info
 ```
 
 Wie bereits erwähnt, wird das resultierende Video an dem Ort gespeichert, auf den Sie den path des ``--output`` -Befehlszeilenflags setzen. Ich habe es so eingestellt, dass es im Ordner "outputs" gespeichert wird. Sie können auch den Typ des gespeicherten Videos ändern, indem Sie das ``--output_format`` -Flag anpassen. standardmäßig ist es auf AVI-Codec eingestellt, was XVID ist.
